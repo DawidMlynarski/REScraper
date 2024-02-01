@@ -1,0 +1,46 @@
+<!-- templates/index.html -->
+
+{% extends "_base.html" %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto">
+
+    <div class="flex justify-center space-x-4 mb-8">
+        <!-- Przycisk "Sprzedaż" -->
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Sprzedaż
+        </button>
+
+        <!-- Przycisk "Wynajem" -->
+        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+            Wynajem
+        </button>
+    </div>
+
+    <!-- Tabelka do wyświetlania wyników -->
+    <div class="bg-white shadow-md rounded my-6">
+        <table class="min-w-max w-full table-auto">
+            <thead>
+                <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                    
+                    <th class="py-3 px-6 text-left">Nazwa</th>
+                    <th class="py-3 px-6 text-left">Cena</th>
+                    
+                </tr>
+            </thead>
+            <tbody class="text-gray-600 text-sm font-light">
+                
+                    <!-- Wyświetlanie danych w tabeli -->
+                    {% for title, price in offers_data %}
+                    <tr class="border-b border-gray-200 hover:bg-gray-100">
+                        <td class="py-3 px-6 text-left whitespace-nowrap">{{ title }}</td>
+                        <td class="py-3 px-6 text-left whitespace-nowrap">{{ price }}</td>
+                    </tr>
+                    {% endfor %}
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}
