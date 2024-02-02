@@ -19,10 +19,27 @@
 </head>
 
 <body class="bg-green-50">
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="{% url 'index' %}" class="text-xl font-bold text-white">REScraper</a>
+            <ul class="flex">
+                <li><a href="#" class="text-white hover:text-gray-300 px-4">Home</a></li>
+                <li><a href="#" class="text-white hover:text-gray-300 px-4">About</a></li>
+                <li><a href="#" class="text-white hover:text-gray-300 px-4">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
     <div class="container mx-auto mt-4">
+
         {% block content %}
         {% endblock content %}
+
     </div>
+    <footer class="bg-gray-800 py-8 text-center text-white">
+        <div class="container mx-auto">
+            <p>&copy; 2023 Web Scraper - Porównywarka cen mieszkań. Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
 </body>
 
 </html>

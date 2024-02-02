@@ -1,0 +1,107 @@
+{% extends "_base.html" %}
+
+{% block content %}
+    <!-- Filters Section -->
+    <section class="bg-gray-900 py-10 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-white mb-6">Filtry wyszukiwania</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="grid grid-cols-1 gap-4 justify-center">
+                <!-- Typ transakcji -->
+                <div class="flex items-center justify-center">
+                    <button id="rentButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg mr-2 focus:outline-none">Wynajem</button>
+                    <button id="saleButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg focus:outline-none">Sprzedaż</button>
+                </div>
+                <!-- Miejscowość -->
+                <div class="flex items-center mt-4 sm:mt-0 justify-center">
+                    <label for="location" class="text-white mr-2 text-left">Miejscowość:</label>
+                    <input type="text" id="location" name="location" class="bg-gray-800 text-white border rounded-md px-2 py-1">
+                </div>
+                <!-- Cena -->
+                <div class="flex items-center mt-4 sm:mt-0 justify-center">
+                    <label for="price" class="text-white mr-2 text-left">Cena:</label>
+                    <input type="text" id="price" name="price" class="bg-gray-800 text-white border rounded-md px-2 py-1">
+                </div>
+                <!-- Szukana fraza -->
+                <div class="flex items-center mt-4 sm:mt-0 justify-center">
+                    <label for="keyword" class="text-white mr-2 text-left">Szukana fraza:</label>
+                    <input type="text" id="keyword" name="keyword" class="bg-gray-800 text-white border rounded-md px-2 py-1">
+                </div>
+                <!-- Metraż -->
+                <div class="flex items-center mt-4 sm:mt-0 justify-center">
+                    <label for="area" class="text-white mr-2 text-left">Metraż:</label>
+                    <input type="text" id="area" name="area" class="bg-gray-800 text-white border rounded-md px-2 py-1">
+                </div>
+                <!-- Cena za metr kwadratowy -->
+                <div class="flex items-center mt-4 sm:mt-0 justify-center">
+                    <label for="price_per_sqm" class="text-white mr-2 text-left">Cena za metr kwadratowy:</label>
+                    <input type="text" id="price_per_sqm" name="price_per_sqm" class="bg-gray-800 text-white border rounded-md px-2 py-1">
+                </div>
+                <!-- Sortowanie -->
+                <div class="flex items-center mt-4 sm:mt-0 justify-center">
+                    <label for="sorting" class="text-white mr-2 text-left">Sortowanie:</label>
+                    <select name="sorting" id="sorting" class="bg-gray-800 text-white border rounded-md px-2 py-1">
+                        {% for value, label in form.sorting.field.choices %}
+                            <option value="{{ value }}" {% if form.sorting.value == value %} selected {% endif %}>{{ label }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <!-- Szukaj Button -->
+                <div class="flex items-center mt-6 justify-center">
+                    <button id="searchButton" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg focus:outline-none">Szukaj</button>
+                </div>
+
+            </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="bg-white py-20">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-10">Nasze funkcje</h2>
+            <div class="flex flex-wrap justify-center">
+                <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 mb-8">
+                    <i class="text-4xl text-blue-500 fas fa-search mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Szybkie wyszukiwanie</h3>
+                    <p class="text-gray-700">Szybko znajdziesz interesujące Cię mieszkania.</p>
+                </div>
+                <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 mb-8">
+                    <i class="text-4xl text-blue-500 fas fa-chart-line mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Porównanie cen</h3>
+                    <p class="text-gray-700">Porównaj ceny mieszkań z różnych źródeł.</p>
+                </div>
+                <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 mb-8">
+                    <i class="text-4xl text-blue-500 fas fa-map-marked-alt mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Wygodna lokalizacja</h3>
+                    <p class="text-gray-700">Łatwo dostępne z dowolnego miejsca.</p>
+                </div>
+                <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 mb-8">
+                    <i class="text-4xl text-blue-500 fas fa-cog mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Prosty w użyciu</h3>
+                    <p class="text-gray-700">Intuicyjne interfejsy użytkownika.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const rentButton = document.getElementById('rentButton');
+        const saleButton = document.getElementById('saleButton');
+
+        rentButton.addEventListener('click', () => {
+            rentButton.classList.remove('bg-blue-500');
+            rentButton.classList.add('bg-blue-700');
+            saleButton.classList.remove('bg-blue-700');
+            saleButton.classList.add('bg-blue-500');
+        });
+
+        saleButton.addEventListener('click', () => {
+            rentButton.classList.remove('bg-blue-700');
+            rentButton.classList.add('bg-blue-500');
+            saleButton.classList.remove('bg-blue-500');
+            saleButton.classList.add('bg-blue-700');
+        });
+    </script>
+{% endblock content %}

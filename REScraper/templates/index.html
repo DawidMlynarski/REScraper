@@ -3,6 +3,44 @@
 {% extends "_base.html" %}
 
 {% block content %}
-<h1>TEST</h1>  
+    <!-- Hero Section -->
+    <section class="bg-gray-900 py-20 text-center">
+        <div class="container mx-auto">
+            <h1 class="text-5xl font-bold text-white mb-4">Porównywarka cen mieszkań</h1>
+            <p class="text-lg text-gray-400">Sprawdź aktualne ceny mieszkań w wybranych lokalizacjach.</p>
+            <div class="mt-10">
+                <a href="{% url 'search' %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full uppercase">Zacznij teraz</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="bg-white py-20">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-10">Nasze funkcje</h2>
+            <div class="flex flex-wrap justify-center">
+                <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 mb-8">
+                    <i class="text-4xl text-blue-500 fas fa-search mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Szybkie wyszukiwanie</h3>
+                    <p class="text-gray-700">Szybko znajdziesz interesujące Cię mieszkania.</p>
+                </div>
+                <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 mb-8">
+                    <i class="text-4xl text-blue-500 fas fa-chart-line mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Porównanie cen</h3>
+                    <p class="text-gray-700">Porównaj ceny mieszkań z różnych źródeł.</p>
+                </div>
+                <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 mb-8">
+                    <i class="text-4xl text-blue-500 fas fa-map-marked-alt mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Wygodna lokalizacja</h3>
+                    <p class="text-gray-700">Łatwo dostępne z dowolnego miejsca.</p>
+                </div>
+                <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 mb-8">
+                    <i class="text-4xl text-blue-500 fas fa-cog mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Prosty w użyciu</h3>
+                    <p class="text-gray-700">Intuicyjne interfejsy użytkownika.</p>
+                </div>
+            </div>
+        </div>
+    </section> 
 
 {% endblock content %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from . import mieszkania
+from .scraper import mieszkania
 
 
 
@@ -15,3 +15,5 @@ def offers(request):
 
     # Przekazanie danych do szablonu HTML
     return render(request, 'offers.html', {'offers_data': offers_data})
+def search(request):
+    return render(request, "search.html")
