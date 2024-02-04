@@ -25,16 +25,18 @@
                     
                     <th class="py-3 px-6 text-left">Nazwa</th>
                     <th class="py-3 px-6 text-left">Cena</th>
+                    <th class="py-3 px-6 text-left">{{location_of_offer}}</th>
                     
                 </tr>
             </thead>
             <tbody class="text-gray-600 text-sm font-light">
                 
                     <!-- Wyświetlanie danych w tabeli -->
-                    {% for title, price in offers_data %}
+                    {% for title, price, location_of_offer in offers_data %}
                     <tr class="border-b border-gray-200 hover:bg-gray-100">
                         <td class="py-3 px-6 text-left whitespace-nowrap">{{ title }}</td>
                         <td class="py-3 px-6 text-left whitespace-nowrap">{{ price }}</td>
+                        <td class="py-3 px-6 text-left whitespace-nowrap">{{ location_of_offer }}</td>
                     </tr>
                     {% endfor %}
                 

@@ -5,7 +5,7 @@
     <section class="bg-gray-900 py-10 text-center">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-white mb-6">Filtry wyszukiwania</h2>
-            <form method="post">
+            <form method="post" action="">
                 {% csrf_token %}
                 <div class="grid grid-cols-1 gap-4 justify-center">
                 <!-- Typ transakcji -->
@@ -48,9 +48,7 @@
                     </select>
                 </div>
                 <!-- Szukaj Button -->
-                <div class="flex items-center mt-6 justify-center">
-                    <button id="searchButton" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg focus:outline-none">Szukaj</button>
-                </div>
+                <button id="searchButton" type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg focus:outline-none">Szukaj</button>
 
             </div>
             </form>

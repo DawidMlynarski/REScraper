@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from .views import index
-from .views import offers
+# from .views import offers
 from .views import search
 
 
@@ -25,7 +25,7 @@ from .views import search
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
-    path('offers/', offers, name='offers'),
+    # path('offers/', offers, name='offers'),
     path('search/', search, name='search'),
     
 ]
