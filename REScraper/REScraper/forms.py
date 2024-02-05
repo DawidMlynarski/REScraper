@@ -13,3 +13,9 @@ class SearchForm(forms.Form):
         ('domyslne', 'Domyślne'),
     ]
     sorting = forms.ChoiceField(label='Sortowanie', choices=sorting_choices, initial='domyslne')
+
+    TRANSACTION_CHOICES = [
+        ('wynajem', 'Wynajem'),
+        ('sprzedaz', 'Sprzedaż'),
+    ]
+    transaction = forms.ChoiceField(label='Typ transakcji', choices=TRANSACTION_CHOICES, widget=forms.RadioSelect)

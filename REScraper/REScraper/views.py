@@ -14,9 +14,10 @@ def search(request):
             area = form.cleaned_data['area']
             price_per_sqm = form.cleaned_data['price_per_sqm']
             sorting = form.cleaned_data['sorting']
+            transaction = form.cleaned_data['transaction']
 
             # Wywołaj funkcję do scrapowania stron
-            offers_data = scrape_multiple_pages(1,2,location, price, keyword, area, price_per_sqm, sorting)
+            offers_data = scrape_multiple_pages(1,2,location, price, keyword, area, price_per_sqm, sorting,transaction)
 
             # Przekazanie danych do szablonu HTML
             return render(request, 'offers.html', {'offers_data': offers_data})

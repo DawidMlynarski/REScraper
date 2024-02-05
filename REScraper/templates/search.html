@@ -9,10 +9,32 @@
                 {% csrf_token %}
                 <div class="grid grid-cols-1 gap-4 justify-center">
                 <!-- Typ transakcji -->
-                <div class="flex items-center justify-center">
-                    <button id="rentButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg mr-2 focus:outline-none">Wynajem</button>
-                    <button id="saleButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg focus:outline-none">Sprzedaż</button>
-                </div>
+                <ul class="grid w-full gap-6 md:grid-cols-2">
+                    <li>
+                        <input type="radio" id="wynajem" name="transaction" value="wynajem" class="hidden peer" required>
+                        <label for="wynajem" class="inline-flex items-center justify-center w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+                            <div class="block">
+                                <div class="w-full text-lg font-semibold">Wynajem</div>
+                                <div class="w-full"></div>
+                            </div>
+                            <svg class="w-5 h-5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                            </svg>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="radio" id="sprzedaz" name="transaction" value="sprzedaz" class="hidden peer">
+                        <label for="sprzedaz" class="inline-flex items-center justify-center w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                            <div class="block">
+                                <div class="w-full text-lg font-semibold">Sprzedaż</div>
+                                <div class="w-full"></div>
+                            </div>
+                            <svg class="w-5 h-5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                            </svg>
+                        </label>
+                    </li>
+                </ul>
                 <!-- Miejscowość -->
                 <div class="flex items-center mt-4 sm:mt-0 justify-center">
                     <label for="location" class="text-white mr-2 text-left">Miejscowość:</label>
@@ -84,22 +106,4 @@
         </div>
     </section>
 
-    <script>
-        const rentButton = document.getElementById('rentButton');
-        const saleButton = document.getElementById('saleButton');
-
-        rentButton.addEventListener('click', () => {
-            rentButton.classList.remove('bg-blue-500');
-            rentButton.classList.add('bg-blue-700');
-            saleButton.classList.remove('bg-blue-700');
-            saleButton.classList.add('bg-blue-500');
-        });
-
-        saleButton.addEventListener('click', () => {
-            rentButton.classList.remove('bg-blue-700');
-            rentButton.classList.add('bg-blue-500');
-            saleButton.classList.remove('bg-blue-500');
-            saleButton.classList.add('bg-blue-700');
-        });
-    </script>
 {% endblock content %}

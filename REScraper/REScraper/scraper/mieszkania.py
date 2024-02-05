@@ -5,8 +5,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 
 # Function to scrape a specific site
-def scrape_page(page_number,location):
-    url = f"https://www.olx.pl/nieruchomosci/mieszkania/sprzedaz/{location}/?page={page_number}"
+def scrape_page(page_number,location,transaction):
+    url = f"https://www.olx.pl/nieruchomosci/mieszkania/{transaction}/{location}/?page={page_number}"
     page_to_scrape = requests.get(url)
     soup = BeautifulSoup(page_to_scrape.text, "html.parser")
     titles = soup.find_all("h6", attrs={"class":"css-16v5mdi er34gjf0"})
@@ -18,10 +18,10 @@ def scrape_page(page_number,location):
 
 # Function to scrape multiple sites
 
-def scrape_multiple_pages(start_page, end_page,location,price,keyword,area,price_per_sqm,sorting):
+def scrape_multiple_pages(start_page, end_page,location,price,keyword,area,price_per_sqm,sorting,transaction):
     offers_data = []
     with ThreadPoolExecutor(max_workers=5) as executor:
-        future_to_page = {executor.submit(scrape_page, page_number,location): page_number for page_number in range(start_page, end_page + 1)}
+        future_to_page = {executor.submit(scrape_page, page_number,location,transaction): page_number for page_number in range(start_page, end_page + 1)}
         for future in as_completed(future_to_page): 
             page_number = future_to_page[future]
             try:
