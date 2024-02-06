@@ -19,3 +19,10 @@ class SearchForm(forms.Form):
         ('sprzedaz', 'Sprzedaż'),
     ]
     transaction = forms.ChoiceField(label='Typ transakcji', choices=TRANSACTION_CHOICES, widget=forms.RadioSelect)
+    NUMBER_OF_ROOMS_CHOICES = [
+        ('one', '1'),
+        ('two', '2'),
+        ('three', '3'),
+        ('four', '4 i więcej'),
+    ]
+    number_of_rooms = forms.ChoiceField(label='Ilość pokoi', choices=NUMBER_OF_ROOMS_CHOICES)

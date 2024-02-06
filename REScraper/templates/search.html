@@ -40,6 +40,14 @@
                     <label for="location" class="text-white mr-2 text-left">Miejscowość:</label>
                     <input type="text" id="location" name="location" class="bg-gray-800 text-white border rounded-md px-2 py-1">
                 </div>
+                <div class="flex items-center mt-4 sm:mt-0 justify-center">
+                    <label for="number_of_rooms" class="text-white mr-2 text-left">Ilość pokoi:</label>
+                    <select name="number_of_rooms" id="number_of_rooms" class="bg-gray-800 text-white border rounded-md px-2 py-1">
+                        {% for value, label in form.number_of_rooms.field.choices %}
+                            <option value="{{ value }}">{{ label }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
                 <!-- Cena -->
                 <div class="flex items-center mt-4 sm:mt-0 justify-center">
                     <label for="price" class="text-white mr-2 text-left">Cena:</label>
