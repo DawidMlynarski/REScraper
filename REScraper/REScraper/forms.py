@@ -8,9 +8,10 @@ class SearchForm(forms.Form):
     area = forms.DecimalField(label='Metraż', required=False)
     price_per_sqm = forms.DecimalField(label='Cena za metr kwadratowy', required=False)
     sorting_choices = [
-        ('cena_rosnaco', 'Cena rosnąco'),
-        ('cena_malejaco', 'Cena malejąco'),
+        ('filter_float_price:asc', 'Cena rosnąco'),
+        ('filter_float_price:desc', 'Cena malejąco'),
         ('domyslne', 'Domyślne'),
+        ('created_at:desc', 'Najnowsze'),
     ]
     sorting = forms.ChoiceField(label='Sortowanie', choices=sorting_choices, initial='domyslne')
 

@@ -3,14 +3,15 @@
 {% extends "_base.html" %}
 
 {% block content %}
-<div class="max-w-2xl mx-auto mt-8">
+<div class="max-w-4xl mx-auto mt-8">
 
     <!-- Tabelka do wyświetlania wyników -->
-    <div class="bg-white shadow-md rounded my-6">
-        <table class="min-w-max w-full table-auto">
+    <div class="bg-white shadow-md rounded my-6 overflow-x-auto">
+        <table class="min-w-full table-auto">
             <thead>
                 <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                     
+                    <th class="py-3 px-6 text-left">Zdjęcie</th>
                     <th class="py-3 px-6 text-left">Nazwa</th>
                     <th class="py-3 px-6 text-left">Cena</th>
                     <th class="py-3 px-6 text-left">Lokalizacja</th>
@@ -20,19 +21,18 @@
             <tbody class="text-gray-600 text-sm font-light">
                 
                     <!-- Wyświetlanie danych w tabeli -->
-                    {% for title, price, location_of_offer, link in offers_data %}
+                    {% for title, price, location_of_offer, link,image_url in offers_data %}
                     <tr class="border-b border-gray-200 hover:bg-gray-100">
-                    <!--
-                        
-                        <td class="py-3 px-6 text-left whitespace-nowrap">
-                            <img src="{{ image_url }}" alt="Zdjęcie oferty" class="w-16 h-16">
+                    
+                        <td class="py-3 px-6 text-left">
+                            <img src="{{ image_url }}" alt="Zdjęcie oferty" class="w-32 h-32 object-cover">
                         </td>
-                    -->
-                        <td class="py-3 px-6 text-left whitespace-nowrap">
+                    
+                        <td class="py-3 px-6 text-left">
                             <a href="{{ link }}" class="text-blue-500 hover:underline" target="_blank">{{ title }}</a>
                         </td>
-                        <td class="py-3 px-6 text-left whitespace-nowrap">{{ price }}</td>
-                        <td class="py-3 px-6 text-left whitespace-nowrap">{{ location_of_offer }}</td>
+                        <td class="py-3 px-6 text-left">{{ price }}</td>
+                        <td class="py-3 px-6 text-left">{{ location_of_offer }}</td>
                     </tr>
                     {% endfor %}
                 
