@@ -10,7 +10,7 @@ class SearchForm(forms.Form):
     sorting_choices = [
         ('filter_float_price:asc', 'Cena rosnąco'),
         ('filter_float_price:desc', 'Cena malejąco'),
-        ('domyslne', 'Domyślne'),
+        (' ', 'Domyślne'),
         ('created_at%3Adesc', 'Najnowsze'),
     ]
     sorting = forms.ChoiceField(label='Sortowanie', choices=sorting_choices, initial='domyslne')

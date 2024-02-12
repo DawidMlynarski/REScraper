@@ -5,7 +5,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # Function to scrape a specific site
 def scrape_page(page_number,location,transaction,number_of_rooms,sorting):
-    url = f"https://www.olx.pl/nieruchomosci/mieszkania/{transaction}/{location}/?page={page_number}&search%5Bfilter_enum_rooms%5D%5B0%5D={number_of_rooms}&search%5Border%5D=created_at:desc"
+    url = f"https://www.olx.pl/nieruchomosci/mieszkania/{transaction}/{location}/?page={page_number}&search%5Bfilter_enum_rooms%5D%5B0%5D={number_of_rooms}"
     page_to_scrape = requests.get(url)
     soup = BeautifulSoup(page_to_scrape.text, "html.parser")
     titles = soup.find_all("h6", attrs={"class":"css-16v5mdi er34gjf0"})
