@@ -55,6 +55,11 @@ def scrape_multiple_pages(start_page, end_page,location="",price="",keyword="",a
 
     if sorting == "newest":
         offers_data = sorted(offers_data, key=lambda x: x[5], reverse=True)
+    elif sorting == "price_asc":
+        offers_data = sorted(offers_data, key=lambda x: x[1], reverse=False)
+    elif sorting == "price_desc":
+        offers_data = sorted(offers_data, key=lambda x: x[1],reverse=True)
+
     
 
     return offers_data
