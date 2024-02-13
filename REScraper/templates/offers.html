@@ -21,7 +21,7 @@
             <tbody class="text-gray-600 text-sm font-light">
                 
                     <!-- Wyświetlanie danych w tabeli -->
-                    {% for title, price, location_of_offer, link,image_url in offers_data %}
+                    {% for title, price, location, link,image_url,date in offers_data %}
                     <tr class="border-b border-gray-200 hover:bg-gray-100">
                         <td class="py-3 px-6 text-left">
                             <img src="{{ image_url }}" alt="Zdjęcie oferty" class="w-32 h-32 object-cover">
@@ -31,7 +31,7 @@
                             <a href="{{ link }}" class="text-blue-500 hover:underline" target="_blank">{{ title }}</a>
                         </td>
                         <td class="py-3 px-6 text-left">{{ price }}</td>
-                        <td class="py-3 px-6 text-left">{{ location_of_offer }}</td>
+                        <td class="py-3 px-6 text-left">{{ location }} , {{ date }}</td>
                     </tr>
                     {% endfor %}
                 
