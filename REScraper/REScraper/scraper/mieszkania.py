@@ -7,8 +7,9 @@ def convert_to_datetime(date_str):
     return datetime.strptime(date_str, "%d %B %Y")
 
 # Function to scrape a specific site
-def scrape_page(page_number,location,transaction,number_of_rooms):
-    url = f"https://www.olx.pl/nieruchomosci/mieszkania/{transaction}/{location}/?page={page_number}&search%5Bfilter_enum_rooms%5D%5B0%5D={number_of_rooms}"
+def scrape_page(page_number,location,transaction,number_of_rooms,keyword,price_from,price_to):
+    url = f"https://www.olx.pl/nieruchomosci/mieszkania/{transaction}/{location}/q-{keyword}/?page={page_number}&search%5Bfilter_enum_rooms%5D%5B0%5D={number_of_rooms}&\
+        search%5Bfilter_float_price:from%5D={price_from}&search%5Bfilter_float_price:to%5D={price_to}"
     page_to_scrape = requests.get(url)
     soup = BeautifulSoup(page_to_scrape.text, "html.parser")
     titles = soup.find_all("h6", attrs={"class":"css-16v5mdi er34gjf0"})
@@ -40,10 +41,10 @@ def scrape_page(page_number,location,transaction,number_of_rooms):
 
 # Function to scrape multiple sites
 
-def scrape_multiple_pages(start_page, end_page,location="",price="",keyword="",area="",price_per_sqm="",sorting="",transaction="",number_of_rooms=""):
+def scrape_multiple_pages(start_page, end_page,location="",keyword="",sorting="",transaction="",number_of_rooms="",price_from="",price_to=""):
     offers_data = []
     with ThreadPoolExecutor(max_workers=5) as executor:
-        future_to_page = {executor.submit(scrape_page, page_number,location,transaction,number_of_rooms): page_number for page_number in range(start_page, end_page + 1)}
+        future_to_page = {executor.submit(scrape_page, page_number,location,transaction,number_of_rooms,keyword,price_from,price_to): page_number for page_number in range(start_page, end_page + 1)}
         for future in as_completed(future_to_page): 
             page_number = future_to_page[future]
             try:
@@ -63,4 +64,6 @@ def scrape_multiple_pages(start_page, end_page,location="",price="",keyword="",a
     
 
     return offers_data
+
+print(scrape_multiple_pages(1,2,"warszawa"))
 

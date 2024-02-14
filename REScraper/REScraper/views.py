@@ -9,16 +9,19 @@ def search(request):
         if form.is_valid():
             # Pobierz dane z formularza
             location = form.cleaned_data['location']
-            price = form.cleaned_data['price']
+            price_from = form.cleaned_data['price_from']
+            price_to = form.cleaned_data['price_to']
             keyword = form.cleaned_data['keyword']
-            area = form.cleaned_data['area']
-            price_per_sqm = form.cleaned_data['price_per_sqm']
+            area_from = form.cleaned_data['area_from']
+            area_to = form.cleaned_data['area_to']
+            price_per_sqm_from = form.cleaned_data['price_per_sqm_from']
+            price_per_sqm_to = form.cleaned_data['price_per_sqm_to']
             sorting = form.cleaned_data['sorting']
             transaction = form.cleaned_data['transaction']
             number_of_rooms = form.cleaned_data['number_of_rooms']
 
             # Wywołaj funkcję do scrapowania stron
-            offers_data = scrape_multiple_pages(1,5,location, price, keyword, area, price_per_sqm, sorting,transaction,number_of_rooms)
+            offers_data = scrape_multiple_pages(1,5,location, keyword, sorting,transaction,number_of_rooms,price_from,price_to)
 
             # Przekazanie danych do szablonu HTML
             return render(request, 'offers.html', {'offers_data': offers_data})
@@ -29,13 +32,3 @@ def search(request):
 
 def index(request):
     return render(request, 'index.html')
-
-# def offers(request):
-
-#     # Wywołaj funkcję do scrapowania stron
-#     offers_data = mieszkania.scrape_multiple_pages(1, 2)
-#     for title, price in offers_data:
-#         print(title + price)
-
-#     # Przekazanie danych do szablonu HTML
-#     return render(request, 'offers.html', {'offers_data': offers_data})
