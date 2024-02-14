@@ -21,7 +21,7 @@ def search(request):
             number_of_rooms = form.cleaned_data['number_of_rooms']
 
             # Wywołaj funkcję do scrapowania stron
-            offers_data = scrape_multiple_pages(1,5,location, keyword, sorting,transaction,number_of_rooms,price_from,price_to)
+            offers_data = scrape_multiple_pages(1,5,location, keyword, sorting,transaction,number_of_rooms,price_from,price_to,area_from,area_to,price_per_sqm_from,price_per_sqm_to)
 
             # Przekazanie danych do szablonu HTML
             return render(request, 'offers.html', {'offers_data': offers_data})
